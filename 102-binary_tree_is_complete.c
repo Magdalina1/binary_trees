@@ -1,9 +1,11 @@
 #include "binary_trees.h"
+
 /**
  * new_node - Function that creates a new_node in a linked_list
  * @node: Type pointer of node to be created
  * Return: the node created
  */
+
 link_t *new_node(binary_tree_t *node)
 {
 	link_t *new;
@@ -23,6 +25,7 @@ link_t *new_node(binary_tree_t *node)
  * free_q - Function that free the nodes at the linked list
  * @head: Node of the linked_list
  */
+
 void free_q(link_t *head)
 {
 	link_t *temp_node;
@@ -41,6 +44,7 @@ void free_q(link_t *head)
  * @head: Type head node of in the stack
  * @tail: Type tail node of in the stack
  */
+
 void _push(binary_tree_t *node, link_t *head, link_t **tail)
 {
 	link_t *new;
@@ -53,4 +57,18 @@ void _push(binary_tree_t *node, link_t *head, link_t **tail)
 	}
 	(*tail)->next = new;
 	*tail = new;
+}
+
+/**
+ * _pop - Function that pops a node into the stack
+ * @head: Type head node of in the stack
+ */
+
+void _pop(link_t **head)
+{
+	link_t *temp_node;
+
+	temp_node = (*head)->next;
+	free(*head);
+	*head = temp_node;
 }
