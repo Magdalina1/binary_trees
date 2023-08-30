@@ -91,3 +91,46 @@ void recursion(link_t **head, const binary_tree_t *tree)
 		recursion(head, tree->right);
 	}
 }
+
+/**
+ * binary_tree_levelorder - print the nodes element in a lever-order
+ * @tree: root node
+ * @func: function to use
+ * Return: Nothing
+ */
+
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
+{
+	link_t *head, *aux;
+	size_t height = 0, count = 0;
+
+	if (!tree || !func)
+	{
+		return;
+	}
+	else
+	{
+		height = binary_tree_height(tree);
+		head = NULL;
+		recursion(&head, tree);
+		while (count <= height)
+		{
+			aux = head;
+			while (aux != NULL)
+			{
+				if (count == aux->n)
+				{
+					func(aux->node->n);
+				}
+				aux = aux->next;
+			}
+			count++;
+		}
+		while (head != NULL)
+		{
+			aux = head;
+			head = head->next;
+			free(aux);
+		}
+	}
+}
