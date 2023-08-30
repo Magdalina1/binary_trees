@@ -70,3 +70,24 @@ void linked_node(link_t **head, const binary_tree_t *tree, size_t level)
 		aux->next = new;
 	}
 }
+
+/**
+ * recursion - goes through the complete tree and each stores each node
+ * in linked_node function
+ * @head: pointer to head of linked list
+ * @tree: node to check
+ * Return: Nothing by default it affects the pointer
+ */
+
+void recursion(link_t **head, const binary_tree_t *tree)
+{
+	size_t level = 0;
+
+	if (tree != NULL)
+	{
+		level = binary_tree_depth(tree);
+		linked_node(head, tree, level);
+		recursion(head, tree->left);
+		recursion(head, tree->right);
+	}
+}
