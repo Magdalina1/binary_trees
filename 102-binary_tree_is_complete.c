@@ -34,3 +34,23 @@ void free_q(link_t *head)
 		head = temp_node;
 	}
 }
+
+/**
+ * _push - Function that pushes a node into the stack
+ * @node: Type pointer of node of the tree
+ * @head: Type head node of in the stack
+ * @tail: Type tail node of in the stack
+ */
+void _push(binary_tree_t *node, link_t *head, link_t **tail)
+{
+	link_t *new;
+
+	new = new_node(node);
+	if (new == NULL)
+	{
+		free_q(head);
+		exit(1);
+	}
+	(*tail)->next = new;
+	*tail = new;
+}
