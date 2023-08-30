@@ -29,7 +29,44 @@ size_t binary_tree_height(const binary_tree_t *tree)
  * @tree: node to check the depth
  * Return: 0 is it is the root or number of depth
  */
+
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
 	return ((tree && tree->parent) ? 1 + binary_tree_depth(tree->parent) : 0);
+}
+
+/**
+ * linked_node - this function makes a linked list from depth level and node
+ * @head: pointer to head of linked list
+ * @tree: node to store
+ * @level: depth of node to store
+ * Return: Nothing
+ */
+
+void linked_node(link_t **head, const binary_tree_t *tree, size_t level)
+{
+	link_t *new, *aux;
+
+	new = malloc(sizeof(link_t));
+	if (new == NULL)
+	{
+		return;
+	}
+	new->n = level;
+	new->node = tree;
+	if (*head == NULL)
+	{
+		new->next = NULL;
+		*head = new;
+	}
+	else
+	{
+		aux = *head;
+		while (aux->next != NULL)
+		{
+			aux = aux->next;
+		}
+		new->next = NULL;
+		aux->next = new;
+	}
 }
