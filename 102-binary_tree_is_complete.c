@@ -18,3 +18,19 @@ link_t *new_node(binary_tree_t *node)
 
 	return (new);
 }
+
+/**
+ * free_q - Function that free the nodes at the linked list
+ * @head: Node of the linked_list
+ */
+void free_q(link_t *head)
+{
+	link_t *temp_node;
+
+	while (head)
+	{
+		temp_node = head->next;
+		free(head);
+		head = temp_node;
+	}
+}
