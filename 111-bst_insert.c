@@ -47,5 +47,5 @@ bst_t *bst_insert(bst_t **tree, int value)
 		else
 			return (NULL);
 	}
-	return (new)
+	return (new);
 }
